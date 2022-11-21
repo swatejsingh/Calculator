@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calculator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: grid;
+            place-items: center;
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(107, 107, 223);
+        }
+        .main{
+            height: 576px;
+            width: 23%;
+            background: none;
+            box-shadow: 0 0 50px 7px rgba(0, 0, 0, 0.223);
+            border-radius: 20px;
+        }
+        .upper{
+            width: 100%;
+            height: 40%;
+            display: flex;
+            align-items: flex-end;
+        }
+        .upper input{
+            width: 100%;
+            height: 60%;
+            display: flex;
+            text-align: right;
+            font-size: 5em;
+            background: none;
+            outline: none;
+            border: none;
+        }
+        .middle{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            height: 70px;
+        }
+        button{
+            font-size: 33px;
+            cursor: pointer;
+            height: 70px;
+            background: none;
+            border: none;
+            font-family: cursive;
+        }
+        .lower{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        .bottom{
+            display: grid;
+            grid-template-columns: 2fr 4.01fr 2fr;
+        }
+        .special{
+            background-color: black;
+            color: white;
+        }
+        .equal{
+            background-color: orange;
+            border-bottom-right-radius: 20px;
+            height: 65px;
+        }
+        button:hover{
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        function Evaluator(self){
+
+            let a = document.getElementById('input')
+
+                if (self == 'c') {
+                    location.reload()
+                }
+                else if (self == '=') {
+                    let answer = eval(a.value)
+                    a.value = `${answer}`
+                }
+                else {
+                    a.value += `${self}`
+                }
+        }
+    </script>
+
+    <div class="main">
+        <div class="upper">
+
+            <input type="text" id="input" placeholder="0">
+
+        </div>
+        <div class="middle">
+            <button id="first3" onclick="Evaluator('c')">C</button>
+            <button id="first3" onclick="Evaluator('%')">%</button>
+            <button id="first3" onclick="Evaluator('00')">00</button>
+            <button id="first3" onclick="Evaluator('/')" class="special">&#xF7;</button>
+        </div>
+        <div class="lower">
+            <button onclick="Evaluator('7')">7</button>
+            <button onclick="Evaluator('8')">8</button>
+            <button onclick="Evaluator('9')">9</button>
+            <button onclick="Evaluator('*')" class="special">x</button>
+
+            <button onclick="Evaluator('4')">4</button>
+            <button onclick="Evaluator('5')">5</button>
+            <button onclick="Evaluator('6')">6</button>
+            <button onclick="Evaluator('-')" class="special">-</button>
+
+            <button onclick="Evaluator('1')">1</button>
+            <button onclick="Evaluator('2')">2</button>
+            <button onclick="Evaluator('3')">3</button>
+            <button onclick="Evaluator('+')" class="special">+</button>
+        </div>
+        <div class="bottom">
+            <button onclick="Evaluator('0')">0</button>
+            <button onclick="Evaluator('.')">.</button>
+            <button onclick="Evaluator('=')" class="equal">=</button>
+        </div>
+    </div>
+
+</body>
+</html>
